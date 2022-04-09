@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operacion</title>
+</head>
+<body>
+
+    <!--
+        <input id="operador 1" type="text" value="ingrese un numero" />
+    
+
+
+    -->
+    
+    <script>
+        var operador1;
+        var operador2;
+        var resultado;
+        var operacion;
+
+
+
+        while (operacion!=0){
+
+            operador1 = parseInt( prompt('ingrese el primer dato'));
+            operador2 = parseInt( prompt('ingrese el segundo dato'));
+            operacion = prompt('indique que operacion desea realizar ' + '\n - Indique 1 para sumar' + '\n - Indique 2 para restar' + '\n - Indique 3 para multiplicar' + '\n - Indique 4 para dividir' + '\n - Indique 0 para finalizar');
+
+ 
+
+            if (operacion==1){
+                resultado = operador1 + operador2;
+                alert('El resultado de la suma es ' + resultado);
+            }
+            else
+            if (operacion==2){
+                resultado = operador1 - operador2;
+                alert('El resultado de la resta es ' + resultado);
+            }
+            else
+            if (operacion==3){
+                resultado = operador1 * operador2;
+                alert('El resultado de la multiplicacion es ' + resultado);
+            }
+             else
+            if (operacion==4){
+                resultado = operador1 / operador2;
+                alert('El resultado de la division es ' + resultado);
+            }
+
+        }
+
+        alert('Se finalizo el proceso!!')
+
+
+
+
+
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>operacion con botones</title>
+</head>
+<body>
+    
+    <h3>Ingrese los valores e indique la operacion</h3>
+
+    <input id="valor1" type="text" placeholder="valor numerico" />
+    <input id="valor2" type="text" placeholder="valor numerico" />
+    <p></p>
+    <input id="suma" type="button" value="suma" />
+    <input id="resta" type="button" value="resta" />
+    <input id="multiplicacion" type="button" value="multiplicacion" />
+    <input id="division" type="button" value="division" />
+
+    <script>
+
+        alert("calculando ando")
+
+        var valor1;
+        var valor2;
+        var resultado;
+
+        //suma
+        document.getElementById('suma').onclick = function(){
+            valor1 = parseInt(document.getElementById('valor1').value);
+            valor2 = parseInt(document.getElementById('valor2').value);
+            resultado = valor1 + valor2; 
+            document.getElementById("resultado").value = resultado;        
+        }
+        //resta
+        document.getElementById('resta').onclick = function(){
+            valor1 = parseInt(document.getElementById('valor1').value);
+            valor2 = parseInt(document.getElementById('valor2').value);
+            resultado = valor1 - valor2; 
+            document.getElementById("resultado").value = resultado;        
+        }
+        //multiplicacion
+        document.getElementById('multiplicacion').onclick = function(){
+            valor1 = parseInt(document.getElementById('valor1').value);
+            valor2 = parseInt(document.getElementById('valor2').value);
+            resultado = valor1 * valor2; 
+            document.getElementById("resultado").value = resultado;        
+        }
+        //division
+        document.getElementById('division').onclick = function(){
+            valor1 = parseInt(document.getElementById('valor1').value);
+            valor2 = parseInt(document.getElementById('valor2').value);
+            resultado = valor1 / valor2; 
+            document.getElementById("resultado").value = resultado;        
+        }
+        
+
+    </script>
+    <br>
+    <h3>resultado</h3>
+    <input type="text" id="resultado" value=""> 
+    
+
+
+
+
+</body>
+</html>

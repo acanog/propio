@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="boton1" type="button" value="Pablo" />
+    
+    <input id="boton2" type="button" value="Compa" />
+    
+    <input id="final" type="button" value="final" />
+    
+
+    <script>
+        
+        alert("Inicia el juego entre Pablo y compa")
+        var n1=0;
+
+        document.getElementById('boton1').onclick = function(){
+            n1++;
+            this.value = "puntos "+n1;
+        }
+        var n2=0;
+        document.getElementById('boton2').onclick = function(){
+            n2++;
+            this.value = "puntos "+n2;
+        }
+
+        document.getElementById('final').onclick = function(){
+            if (n1>n2){
+                alert("el ganador es Pablo");
+                }
+            else {
+                alert("el ganador es Compa");
+            }
+        }
+            
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,1 @@
+& C:/Python310/python.exeprint ("pepe grillo")a que chimba, una mas
