@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>factura web</title>
+    <h1>Factura la melactica</h1><br>
+</head>
+<body>
+        <H3>Espacio creado para el ingreso de facturas.</H3>
+
+        <div id="titulos_crear-buscar">
+            <p>Id de la empresa</p>
+        </div>
+
+        
+        <div id="boton_crear"><input id="crearEmpresa" type="button" value="Crear Empresa" /></div>
+
+
+        <div id="textos_buscar-crear">
+
+            <input id="campo_idEmpresa" type="text" placeholder="idEmpresa" />
+            <input id="campo_nombreEmpresa" type="text" placeholder="NombreEmpresa"/>
+            <input id="campo_nit" type="text" placeholder="NIT" />
+
+        </div>
+        <div id="botones_buscar-crear">
+            <input id="idEmpresa" type="button" value="Buscar idEmpresa" />
+            <input id="nombreEmpresa" type="button" value="Buscar nombre Empresa" />
+            <input id="nit" type="button" value="Buscar NIT Empresa" />
+
+        </div>
+        <script>
+
+            
+            document.getElementById('crearEmpresa').onclick = function(){
+               
+                alert ("caso")
+            }
+
+            var Buscar = 0;
+            document.getElementById('idEmpresa').onclick = function(){
+                dato = document.getElementById('campo_idEmpresa').value;
+                document.getElementById("dato").value = dato;
+                Buscar = 1;
+            }
+            document.getElementById('nombreEmpresa').onclick = function(){
+                dato = document.getElementById('campo_nombreEmpresa').value;
+                document.getElementById("dato").value = dato; 
+                Buscar = 2;
+            }
+            document.getElementById('nit').onclick = function(){
+                dato = document.getElementById('campo_nit').value;
+                document.getElementById("dato").value = dato; 
+                Buscar = 3;
+            }        
+            
+        </script>
+
+
+
+        <h3>resultado</h3>
+        <input type="text" id="dato" value=""> 
+        
+
+        
+
+
+
+</body>
+</html>

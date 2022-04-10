@@ -1,0 +1,6 @@
+
+
+var dato;
+
+alert   ("dato")
+
