@@ -12,8 +12,11 @@ namespace SistemaGestion.ADO
 {
     public class ADO_Producto
     {
-        public static List<Producto> TraerProducto(int idUsuario)
+        public static List<Producto> TraerProducto(int idUsuarioProducto)
         {
+            var listaProductos = new List<Producto>();
+
+
             SqlConnectionStringBuilder conecctionbuilder = new SqlConnectionStringBuilder();
             conecctionbuilder.DataSource = "DESKTOP-RRAI8UU";
             conecctionbuilder.InitialCatalog = "dbSistemaGestionCoder";
@@ -48,29 +51,53 @@ namespace SistemaGestion.ADO
                     listaProductos.Add(produc);
 
                 }
-               //Console.WriteLine("---- PRODUCTOS ----- ");
-               //foreach (var produc in listaProductos)
-               //{
-               //    Console.WriteLine("id = " + produc.Id);
-               //    Console.WriteLine("Descripciones = " + produc.Descripcion);
-               //    Console.WriteLine("Costo = " + produc.Costo);
-               //    Console.WriteLine("PrecioVenta = " + produc.PrecioVenta);
-               //    Console.WriteLine("Stock = " + produc.Stock);
-               //    Console.WriteLine("IdUsuario = " + produc.IdUsuario);
-               //
-               //    Console.WriteLine("--------------");
-               //
-               //}
+                //Console.WriteLine("---- PRODUCTOS ----- ");
+                //foreach (var produc in listaProductos)
+                //{
+                //    Console.WriteLine("id = " + produc.Id);
+                //    Console.WriteLine("Descripciones = " + produc.Descripcion);
+                //    Console.WriteLine("Costo = " + produc.Costo);
+                //    Console.WriteLine("PrecioVenta = " + produc.PrecioVenta);
+                //    Console.WriteLine("Stock = " + produc.Stock);
+                //    Console.WriteLine("IdUsuario = " + produc.IdUsuario);
+                //
+                //    Console.WriteLine("--------------");
+                //
+                //}
                 reader2.Close();
+                connection.Close();
+
+
+                return new List<Producto>();
+
+            }
+
+
+        }
+
+        public static List<Producto> TraerProductoVendido(int idUsuarioProducto)
+        {
+
+            var listaProductosVendidos = new List<Producto>();
+
+            SqlConnectionStringBuilder conecctionbuilder = new SqlConnectionStringBuilder();
+            conecctionbuilder.DataSource = "DESKTOP-RRAI8UU";
+            conecctionbuilder.InitialCatalog = "dbSistemaGestionCoder";
+            conecctionbuilder.IntegratedSecurity = true;
+            var cs = conecctionbuilder.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(cs))
+            {
+                connection.Open();
 
                 //  Punto 3
                 SqlCommand cmd3 = connection.CreateCommand();
-                cmd3.CommandText = "select Descripciones,Costo,PrecioVenta,IdUsuario,IdProducto,IdVenta from Producto as p inner join ProductoVendido as pv on pv.IdProducto = p.Id where idUsuario = @idUsuarioPV";
-                cmd3.Parameters.Add(new SqlParameter("idUsuarioPV", idUsuarioPV));
+                cmd3.CommandText = "select p.Id,Descripciones,Costo,PrecioVenta,p.Stock,IdUsuario from Producto as p inner join ProductoVendido as pv on pv.IdProducto = p.Id where idUsuario = @idUsuarioProducto";
+                cmd3.Parameters.Add(new SqlParameter("idUsuarioProducto", idUsuarioProducto));
 
 
                 var param3 = new SqlParameter("@idUsuarioPV", SqlDbType.Int);
-                param3.Value = idUsuarioPV;
+                param3.Value = idUsuarioProducto;
 
                 var reader3 = cmd3.ExecuteReader();
                 while (reader3.Read())
@@ -101,11 +128,21 @@ namespace SistemaGestion.ADO
 
                 }
                 reader3.Close();
+                connection.Close();
+
                 return new List<Producto>();
 
 
-                connection.Close();
-                
+
+
+            }
+
+
         }
-            
+
+
+
+    }
+
+
 }

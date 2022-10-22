@@ -29,40 +29,26 @@ class Program
 
 
         //  c.  Traer productos vendidos
-        int idUsuarioPV = 1;
         var listaProductosVendidos = new List<Producto>();
-        listaProductosVendidos = ADO_Producto.TraerProducto(idUsuarioPV);
+        listaProductosVendidos = ADO_Producto.TraerProductoVendido(idUsuarioProducto);
 
 
         //  d.  Traer ventas
-        int idUsuarioV = 1;
+        int idUsuarioPV = 1;
         var listaVentas = new List<Venta>();
         listaVentas = ADO_Venta.TraerVentas(idUsuarioPV);
 
 
         //  d.  inicio de sesion
-        string Contraseña = "tcasazza";
+        string contraseña = "tcasazza";
         Usuario Login = new Usuario();
-        Login = ADO_Usuario.IniciarSesion(nombreUsuario, Contraseña);
+        Login = ADO_Usuario.IniciarSesion(nombreUsuario, contraseña);
 
         //login = ADO_Usuario.IniciarSesion(nombreUsuario, contraseña);
 
         //var ListaProductos = new List<Producto>();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-    }
     }
 
 }

@@ -57,41 +57,48 @@ namespace SistemaGestion.ADO
                 return new Usuario();
             }
 
-            public static Usuario IniciarSesion(string nombreUsuario, string contraseña)
+
+        }
+        public static Usuario IniciarSesion(string nombreUsuario, string contraseña)
+        {
+            SqlConnectionStringBuilder conecctionbuilder = new SqlConnectionStringBuilder();
+            conecctionbuilder.DataSource = "DESKTOP-RRAI8UU";
+            conecctionbuilder.InitialCatalog = "dbSistemaGestionCoder";
+            conecctionbuilder.IntegratedSecurity = true;
+            var cs = conecctionbuilder.ConnectionString;
+
+            using (SqlConnection connection = new SqlConnection(cs))
             {
-                SqlConnectionStringBuilder conecctionbuilder = new SqlConnectionStringBuilder();
-                conecctionbuilder.DataSource = "DESKTOP-RRAI8UU";
-                conecctionbuilder.InitialCatalog = "dbSistemaGestionCoder";
-                conecctionbuilder.IntegratedSecurity = true;
-                var cs = conecctionbuilder.ConnectionString;
+                connection.Open();
 
-                using (SqlConnection connection = new SqlConnection(cs))
+                //  Punto 6
+                SqlCommand cmd5 = connection.CreateCommand();
+                cmd5.CommandText = "select * from Usuario where NombreUsuario=@nombreUsuario and Contraseña=@Contraseña";
+                cmd5.Parameters.Add(new SqlParameter("nombreUsuario", nombreUsuario));
+                cmd5.Parameters.Add(new SqlParameter("Contraseña", contraseña));
+
+                var param5 = new SqlParameter("@nombreUsuario", SqlDbType.VarChar);
+                param5.Value = nombreUsuario;
+                var param6 = new SqlParameter("@Contraseña", SqlDbType.VarChar);
+                param6.Value = contraseña;
+
+                var reader5 = cmd5.ExecuteReader();
+                while (reader5.Read())
                 {
-                    connection.Open();
-
-                    //  Punto 6
-                    SqlCommand cmd5 = connection.CreateCommand();
-                    cmd5.CommandText = "select * from Usuario where NombreUsuario=@nombreUsuario and Contraseña=@Contraseña";
-                    cmd5.Parameters.Add(new SqlParameter("nombreUsuario", nombreUsuario));
-                    cmd5.Parameters.Add(new SqlParameter("Contraseña", Contraseña));
-
-                    var param5 = new SqlParameter("@nombreUsuario", SqlDbType.VarChar);
-                    param5.Value = nombreUsuario;
-                    var param6 = new SqlParameter("@Contraseña", SqlDbType.VarChar);
-                    param6.Value = Contraseña;
-
-                    var reader5 = cmd5.ExecuteReader();
-                    while (reader5.Read())
-                    {
-                        var User = new Usuario();
-                        User.NombreUsuario = reader5.GetValue(3).ToString();
-
-                    }
-                    reader5.Close();
-                    connection.Close();
-                    return new Usuario();
+                    var User = new Usuario();
+                    User.NombreUsuario = reader5.GetValue(3).ToString();
 
                 }
+                reader5.Close();
+                connection.Close();
+                return new Usuario();
+
             }
+
+
+
         }
+
     }
+
+}

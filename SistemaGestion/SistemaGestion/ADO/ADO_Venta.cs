@@ -22,17 +22,20 @@ namespace SistemaGestion.ADO
 
             using (SqlConnection connection = new SqlConnection(cs))
             {
+
+                var listaVentas = new List<Venta>();
+
                 connection.Open();
 
 
                 //  Punto 4
                 SqlCommand cmd4 = connection.CreateCommand();
                 cmd4.CommandText = "select * from Venta where IdUsuario = @idUsuarioV";
-                cmd4.Parameters.Add(new SqlParameter("idUsuarioV", idUsuarioV));
+                cmd4.Parameters.Add(new SqlParameter("idUsuarioV", IdUsuario));
 
 
                 var param4 = new SqlParameter("@idUsuarioV", SqlDbType.Int);
-                param4.Value = idUsuarioV;
+                param4.Value = IdUsuario;
 
                 var reader4 = cmd4.ExecuteReader();
                 while (reader4.Read())
@@ -61,5 +64,9 @@ namespace SistemaGestion.ADO
 
                 connection.Close();
             }
+
+        }
+
     }
+
 }
